@@ -9,7 +9,7 @@ import HtmlEntityTool from './pages/HtmlEntityTool';
 
 function App() {
   return (
-    <Router>
+    <Router basename="/DevToolBox">
       <Layout>
         <Routes>
           <Route path="/" element={<Navigate to="/base64" replace />} />
