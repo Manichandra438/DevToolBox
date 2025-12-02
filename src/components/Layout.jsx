@@ -223,9 +223,6 @@ export default function Layout({ children }) {
                     <div className="max-w-5xl mx-auto">
                         <motion.div
                             key={location.pathname === '/' ? '/base64' : location.pathname}
-                            initial={{ opacity: 0, x: 20 }}
-                            animate={{ opacity: 1, x: 0 }}
-                            transition={{ duration: 0.3 }}
                         >
                             {children}
                         </motion.div>
