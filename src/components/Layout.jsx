@@ -221,17 +221,14 @@ export default function Layout({ children }) {
 
                 <div className="flex-1 overflow-y-auto p-4 lg:p-8">
                     <div className="max-w-5xl mx-auto">
-                        <AnimatePresence mode="wait">
-                            <motion.div
-                                key={location.pathname === '/' ? '/base64' : location.pathname}
-                                initial={{ opacity: 0, x: 20 }}
-                                animate={{ opacity: 1, x: 0 }}
-                                exit={{ opacity: 0, x: -20 }}
-                                transition={{ duration: 0.3 }}
-                            >
-                                {children}
-                            </motion.div>
-                        </AnimatePresence>
+                        <motion.div
+                            key={location.pathname === '/' ? '/base64' : location.pathname}
+                            initial={{ opacity: 0, x: 20 }}
+                            animate={{ opacity: 1, x: 0 }}
+                            transition={{ duration: 0.3 }}
+                        >
+                            {children}
+                        </motion.div>
                     </div>
                 </div>
             </main>
