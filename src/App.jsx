@@ -12,7 +12,7 @@ function App() {
     <Router basename="/DevToolBox">
       <Layout>
         <Routes>
-          <Route path="/" element={<Navigate to="/base64" replace />} />
+          <Route path="/" element={<Base64Tool />} />
           <Route path="/base64" element={<Base64Tool />} />
           <Route path="/url" element={<UrlTool />} />
           <Route path="/json" element={<JsonTool />} />
