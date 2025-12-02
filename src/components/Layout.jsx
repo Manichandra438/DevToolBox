@@ -86,7 +86,7 @@ export default function Layout({ children }) {
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.1 }}
                 >
-                    <Link to="/" className="cursor-pointer">
+                    <Link to="/base64" className="cursor-pointer">
                         <motion.h1
                             className="text-2xl font-bold bg-gradient-to-r from-blue-500 to-purple-600 bg-clip-text text-transparent"
                             whileHover={{ scale: 1.05 }}
