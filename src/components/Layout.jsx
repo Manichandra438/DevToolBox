@@ -10,7 +10,8 @@ import {
     Menu,
     X,
     Moon,
-    Sun
+    Sun,
+    Github
 } from 'lucide-react';
 import { cn } from '../lib/utils';
 
@@ -25,7 +26,11 @@ const tools = [
 export default function Layout({ children }) {
     const location = useLocation();
     const [isSidebarOpen, setIsSidebarOpen] = useState(false);
-    const [isDark, setIsDark] = useState(true); // Default to dark mode
+    const [isDark, setIsDark] = useState(() => {
+        // Load theme preference from localStorage, default to dark mode
+        const savedTheme = localStorage.getItem('theme');
+        return savedTheme ? savedTheme === 'dark' : true;
+    });
 
     const toggleSidebar = () => setIsSidebarOpen(!isSidebarOpen);
     const toggleTheme = () => {
@@ -35,6 +40,16 @@ export default function Layout({ children }) {
 
     // Initialize theme on mount
     React.useEffect(() => {
+        if (isDark) {
+            document.documentElement.classList.add('dark');
+        } else {
+            document.documentElement.classList.remove('dark');
+        }
+    }, []);
+
+    // Save theme preference to localStorage whenever it changes
+    React.useEffect(() => {
+        localStorage.setItem('theme', isDark ? 'dark' : 'light');
         if (isDark) {
             document.documentElement.classList.add('dark');
         } else {
@@ -71,9 +86,15 @@ export default function Layout({ children }) {
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.1 }}
                 >
-                    <h1 className="text-2xl font-bold bg-gradient-to-r from-blue-500 to-purple-600 bg-clip-text text-transparent">
-                        DevTools
-                    </h1>
+                    <Link to="/" className="cursor-pointer">
+                        <motion.h1
+                            className="text-2xl font-bold bg-gradient-to-r from-blue-500 to-purple-600 bg-clip-text text-transparent"
+                            whileHover={{ scale: 1.05 }}
+                            whileTap={{ scale: 0.95 }}
+                        >
+                            DevTools
+                        </motion.h1>
+                    </Link>
                     <motion.button
                         whileHover={{ scale: 1.1, rotate: 90 }}
                         whileTap={{ scale: 0.9 }}
@@ -126,11 +147,30 @@ export default function Layout({ children }) {
                 </nav>
 
                 <motion.div
-                    className="p-4 border-t border-border shrink-0"
+                    className="p-4 border-t border-border shrink-0 space-y-2"
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.4 }}
                 >
+                    {/* GitHub Link */}
+                    <motion.a
+                        href="https://github.com/Manichandra438"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        whileHover={{ scale: 1.02 }}
+                        whileTap={{ scale: 0.98 }}
+                        className="flex items-center justify-center gap-2 w-full p-2 rounded-lg hover:bg-accent transition-colors group"
+                    >
+                        <motion.div
+                            whileHover={{ rotate: 360 }}
+                            transition={{ duration: 0.5 }}
+                        >
+                            <Github size={20} />
+                        </motion.div>
+                        <span className="group-hover:text-primary transition-colors">GitHub Profile</span>
+                    </motion.a>
+
+                    {/* Theme Toggle */}
                     <motion.button
                         whileHover={{ scale: 1.02 }}
                         whileTap={{ scale: 0.98 }}
