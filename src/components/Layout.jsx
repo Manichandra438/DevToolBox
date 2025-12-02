@@ -216,7 +216,9 @@ export default function Layout({ children }) {
                     >
                         <Menu size={24} />
                     </motion.button>
-                    <span className="ml-4 font-semibold">Menu</span>
+                    <Link to="/base64">
+                        <span className="ml-4 text-2xl font-bold bg-gradient-to-r from-blue-500 to-purple-600 bg-clip-text text-transparent">DevTools</span>
+                    </Link>
                 </header>
 
                 <div className="flex-1 overflow-y-auto p-4 lg:p-8">
