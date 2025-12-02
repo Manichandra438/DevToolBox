@@ -223,7 +223,7 @@ export default function Layout({ children }) {
                     <div className="max-w-5xl mx-auto">
                         <AnimatePresence mode="wait">
                             <motion.div
-                                key={location.pathname}
+                                key={location.pathname === '/' ? '/base64' : location.pathname}
                                 initial={{ opacity: 0, x: 20 }}
                                 animate={{ opacity: 1, x: 0 }}
                                 exit={{ opacity: 0, x: -20 }}
