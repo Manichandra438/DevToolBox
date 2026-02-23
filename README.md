@@ -1,7 +1,7 @@
 # DevToolBo
 
 To access the site, visit:  
-https://github.com/Manichandra438/DevToolBo
+[https://github.com/Manichandra438/DevToolBo](https://manichandra438.github.io/DevToolBox)
 
 ---
 
